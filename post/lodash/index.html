@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.loli.net/css?family=Damion:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文转载自：众成翻译译者：少年阿布DX链接：http://www.zcfy.cc/article/467原文：https://www.sitepoint.com/lodash-features-replace-es6/  Dan Prince 本文由 Mark Brown 协助审查。感谢所有 SitePoint 的审稿人使 SitePoint 的内容能达到最佳。 Lodash 现在是 npm 上">
+<meta name="keywords" content="lodash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10 个可用 ES6 替代的 Lodash 特性">
+<meta property="og:url" content="https://raincal.gitee.io/blog/post/lodash/index.html">
+<meta property="og:site_name" content="Raincal&#39;s Blog">
+<meta property="og:description" content="本文转载自：众成翻译译者：少年阿布DX链接：http://www.zcfy.cc/article/467原文：https://www.sitepoint.com/lodash-features-replace-es6/  Dan Prince 本文由 Mark Brown 协助审查。感谢所有 SitePoint 的审稿人使 SitePoint 的内容能达到最佳。 Lodash 现在是 npm 上">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-01T09:33:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 个可用 ES6 替代的 Lodash 特性">
+<meta name="twitter:description" content="本文转载自：众成翻译译者：少年阿布DX链接：http://www.zcfy.cc/article/467原文：https://www.sitepoint.com/lodash-features-replace-es6/  Dan Prince 本文由 Mark Brown 协助审查。感谢所有 SitePoint 的审稿人使 SitePoint 的内容能达到最佳。 Lodash 现在是 npm 上">
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="Raincal's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://raincal.gitee.io/blog/post/lodash/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>10 个可用 ES6 替代的 Lodash 特性 | Raincal's Blog</title>
+  
+
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-89637345-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Raincal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-photos">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/photos/" rel="section"><i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>相册</a>
+
+  </li>
+
+      
+      
+        
+        <li class="menu-item menu-item-search">
+          
+            <a href="https://gog.now.sh/search?q=site%3Araincal.com" target="_blank" rel="noopener">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        
+
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://raincal.gitee.io/blog/blog/post/lodash/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Raincal">
+      <meta itemprop="description" content="El Psy Congroo">
+      <meta itemprop="image" content="https://cdn-1256167913.image.myqcloud.com/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Raincal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">10 个可用 ES6 替代的 Lodash 特性
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-06-30 21:02:10" itemprop="dateCreated datePublished" datetime="2016-06-30T21:02:10+08:00">2016-06-30</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a data-disqus-url="/blog/post/lodash/" href="/blog/post/lodash/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/lodash/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/blog/post/lodash/" class="leancloud_visitors" data-flag-title="10 个可用 ES6 替代的 Lodash 特性">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="noopener">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@shawndai06" target="_blank" rel="noopener">少年阿布DX</a><br>链接：<a href="http://www.zcfy.cc/article/467" target="_blank" rel="noopener">http://www.zcfy.cc/article/467</a><br>原文：<a href="https://www.sitepoint.com/lodash-features-replace-es6/" target="_blank" rel="noopener">https://www.sitepoint.com/lodash-features-replace-es6/</a></p>
+</blockquote>
+<p><a href="https://www.sitepoint.com/author/dprince/" target="_blank" rel="noopener">Dan Prince</a></p>
+<p><em>本文由 <a href="https://www.sitepoint.com/author/mbrown" target="_blank" rel="noopener">Mark Brown</a> 协助审查。感谢所有 SitePoint 的审稿人使 SitePoint 的内容能达到最佳</em>。</p>
+<p><a href="https://lodash.com/" target="_blank" rel="noopener">Lodash</a> 现在是 npm 上<a href="https://www.npmjs.com/browse/depended" target="_blank" rel="noopener">被依赖最多的包</a>，但如果你在使用 ES6 的话，实际上你可能不再需要它了。在本文中，我们将使用原生的集合方法与箭头函数还有一些其它新的特性来帮我们更简便地实现许多热门的用例。</p>
+<h2 id="1-Map-Filter-Reduce"><a href="#1-Map-Filter-Reduce" class="headerlink" title="1. Map, Filter, Reduce"></a>1. Map, Filter, Reduce</h2><p>这些集合方法使数据转化变得轻而易举。由于普遍地对此特性的支持，我们可以将它与箭头函数组合起来，以助我们使用比 Lodash 的实现更简便的方法来实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">_.map([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123; <span class="keyword">return</span> n * <span class="number">3</span>; &#125;);</span><br><span class="line"><span class="comment">// [3, 6, 9]</span></span><br><span class="line">_.reduce([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">total, n</span>) </span>&#123; <span class="keyword">return</span> total + n; &#125;, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line">_.filter([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123; <span class="keyword">return</span> n &lt;= <span class="number">2</span>; &#125;);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">n</span> =&gt;</span> n * <span class="number">3</span>);</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="function">(<span class="params">total, n</span>) =&gt;</span> total + n);</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].filter(<span class="function"><span class="params">n</span> =&gt;</span> n &lt;= <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>不止于此，如果我们使用 ES6 的 polyfill，我们也能使用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank" rel="noopener">find</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">some</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every" target="_blank" rel="noopener">every</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" target="_blank" rel="noopener">reduceRight</a></p>
+<a id="more"></a>
+<h2 id="2-Head-amp-Tail"><a href="#2-Head-amp-Tail" class="headerlink" title="2. Head &amp; Tail"></a>2. Head &amp; Tail</h2><p><a href="https://www.sitepoint.com/preparing-ecmascript-6-destructuring-assignment/" target="_blank" rel="noopener">解构语法</a> 让我们可以获取一个列表的头（head）和尾（tail），而无需工具函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">_.head([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">_.tail([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="comment">// [2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+<p>也可以用相似的方式获得列表最后一个元素（last）以及除其之外的元素（initial）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">_.initial([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="comment">// -&gt; [1, 2]</span></span><br><span class="line">_.last([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [last, ...initial] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reverse();</span><br></pre></td></tr></table></figure>
+<p>如果你讨厌 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse" target="_blank" rel="noopener">reverse</a> 会改变数据结构，那你可以在调用 reverse 之前使用延展操作符（spread operator）来复制一个数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xs = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> [last, ...initial] = [...xs].reverse();</span><br></pre></td></tr></table></figure>
+<h2 id="3-Rest-amp-Spread"><a href="#3-Rest-amp-Spread" class="headerlink" title="3. Rest &amp; Spread"></a>3. Rest &amp; Spread</h2><p><a href="https://lodash.com/docs#rest" target="_blank" rel="noopener">rest</a> 和 <a href="https://lodash.com/docs#spread" target="_blank" rel="noopener">spread</a> 函数能让我们定义与调用能接受参数数量不定的函数。ES6 为这两种操作引入了专用的语法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> say = _.rest(<span class="function"><span class="keyword">function</span>(<span class="params">what, names</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> last = _.last(names);</span><br><span class="line">  <span class="keyword">var</span> initial = _.initial(names);</span><br><span class="line">  <span class="keyword">var</span> finalSeparator = (_.size(names) &gt; <span class="number">1</span> ? <span class="string">', &amp; '</span> : <span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> what + <span class="string">' '</span> + initial.join(<span class="string">', '</span>) +</span><br><span class="line">    finalSeparator + _.last(names);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">say(<span class="string">'hello'</span>, <span class="string">'fred'</span>, <span class="string">'barney'</span>, <span class="string">'pebbles'</span>);</span><br><span class="line"><span class="comment">// "hello fred, barney, &amp; pebbles"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> say = <span class="function">(<span class="params">what, ...names</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [last, ...initial] = names.reverse();</span><br><span class="line">  <span class="keyword">const</span> finalSeparator = (names.length &gt; <span class="number">1</span> ? <span class="string">', &amp;'</span> : <span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;what&#125;</span> <span class="subst">$&#123;initial.join(<span class="string">', '</span>)&#125;</span> <span class="subst">$&#123;finalSeparator&#125;</span> <span class="subst">$&#123;last&#125;</span>`</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">say(<span class="string">'hello'</span>, <span class="string">'fred'</span>, <span class="string">'barney'</span>, <span class="string">'pebbles'</span>);</span><br><span class="line"><span class="comment">// "hello fred, barney, &amp; pebbles"</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-Curry"><a href="#4-Curry" class="headerlink" title="4. Curry"></a>4. Curry</h2><p>如果没有更高级的语言如 <a href="http://www.typescriptlang.org" target="_blank" rel="noopener">TypeScript</a> 和 <a href="http://flowtype.org/" target="_blank" rel="noopener">Flow</a> 的支持，我们不能给函数设置类型签名，这使得函数的<a href="https://www.sitepoint.com/currying-in-functional-javascript/" target="_blank" rel="noopener">柯里化</a>（currying）非常困难。当我们接收一个柯里化的函数时，很难知道已经应用了多少参数以及我们接下来该提供什么参数。通过箭头函数，我们能显示地定义柯里化函数，使得它们对其他程序员来说非常易于理解。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> curriedAdd = _.curry(add);</span><br><span class="line"><span class="keyword">var</span> add2 = curriedAdd(<span class="number">2</span>);</span><br><span class="line">add2(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="params">a</span> =&gt;</span> b =&gt; a + b;</span><br><span class="line"><span class="keyword">const</span> add2 = add(<span class="number">2</span>);</span><br><span class="line">add2(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>这些显式的柯里化箭头函数对调试非常重要。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> lodashAdd = _.curry(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> add3 = lodashAdd(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(add3.length)</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(add3);</span><br><span class="line"><span class="comment">//function wrapper() &#123;</span></span><br><span class="line"><span class="comment">//  var length = arguments.length,</span></span><br><span class="line"><span class="comment">//  args = Array(length),</span></span><br><span class="line"><span class="comment">//  index = length;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  while (index--) &#123;</span></span><br><span class="line"><span class="comment">//    args[index] = arguments[index];</span></span><br><span class="line"><span class="comment">//  &#125;…</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> es6Add = <span class="function"><span class="params">a</span> =&gt;</span> b =&gt; a + b;</span><br><span class="line"><span class="keyword">const</span> add3 = es6Add(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(add3.length);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(add3);</span><br><span class="line"><span class="comment">// function b =&gt; a + b</span></span><br></pre></td></tr></table></figure>
+<p>如果我们使用函数式的库如 <a href="https://github.com/lodash/lodash/wiki/FP-Guide" target="_blank" rel="noopener">lodash/fp</a> 和 <a href="http://ramdajs.com" target="_blank" rel="noopener">ramda</a>，那我们也能使用箭头函数来免除对自动柯里化风格的需要。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_.map(_.prop(<span class="string">'name'</span>))(people);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line">people.map(<span class="function"><span class="params">person</span> =&gt;</span> person.name);</span><br></pre></td></tr></table></figure>
+<h2 id="5-Partial"><a href="#5-Partial" class="headerlink" title="5. Partial"></a>5. Partial</h2><p>正如柯里化一样，我们也能使用箭头函数来简化显式化偏函数用法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> greet = <span class="function"><span class="keyword">function</span>(<span class="params">greeting, name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> greeting + <span class="string">' '</span> + name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sayHelloTo = _.partial(greet, <span class="string">'hello'</span>);</span><br><span class="line">sayHelloTo(<span class="string">'fred'</span>);</span><br><span class="line"><span class="comment">// "hello fred"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sayHelloTo = <span class="function"><span class="params">name</span> =&gt;</span> greet(<span class="string">'hello'</span>, name);</span><br><span class="line">sayHelloTo(<span class="string">'fred'</span>);</span><br><span class="line"><span class="comment">// "hello fred"</span></span><br></pre></td></tr></table></figure>
+<p>我们也能结合剩余参数与延展操作符来部分地应用可变参数函数、</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sayHelloTo = <span class="function">(<span class="params">name, ...args</span>) =&gt;</span> greet(<span class="string">'hello'</span>, name, ...args);</span><br><span class="line">sayHelloTo(<span class="string">'fred'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// "hello fred"</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-Operators"><a href="#6-Operators" class="headerlink" title="6. Operators"></a>6. Operators</h2><p>Lodash 把很多句法操作符重新实现成了函数，所以它们可以被传入集合方法。</p>
+<p>在大多数情况下，箭头函数能让它们定义地足够简单精炼，一行足矣。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">_.eq(<span class="number">3</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line">_.add(<span class="number">10</span>, <span class="number">1</span>);</span><br><span class="line"><span class="comment">// 11</span></span><br><span class="line">_.map([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> _.multiply(n, <span class="number">10</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// [10, 20, 30]</span></span><br><span class="line">_.reduce([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], _.add);</span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span> === <span class="number">3</span></span><br><span class="line"><span class="number">10</span> + <span class="number">1</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">n</span> =&gt;</span> n * <span class="number">10</span>);</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].reduce(<span class="function">(<span class="params">total, n</span>) =&gt;</span> total + n);</span><br></pre></td></tr></table></figure>
+<h2 id="7-Paths"><a href="#7-Paths" class="headerlink" title="7. Paths"></a>7. Paths</h2><p>许多 Lodash 的函数把路径当做字符串或者数组。然而我们可以使用箭头函数来创建更多可重用的路径。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = &#123; <span class="string">'a'</span>: [&#123; <span class="string">'b'</span>: &#123; <span class="string">'c'</span>: <span class="number">3</span> &#125; &#125;, <span class="number">4</span>] &#125;;</span><br><span class="line"></span><br><span class="line">_.at(object, [<span class="string">'a[0].b.c'</span>, <span class="string">'a[1]'</span>]);</span><br><span class="line"><span class="comment">// [3, 4]</span></span><br><span class="line">_.at([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// ['a', 'c']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  obj =&gt; obj.a[<span class="number">0</span>].b.c,</span><br><span class="line">  obj =&gt; obj.a[<span class="number">1</span>]</span><br><span class="line">].map(<span class="function"><span class="params">path</span> =&gt;</span> path(object));</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  arr =&gt; arr[<span class="number">0</span>],</span><br><span class="line">  arr =&gt; arr[<span class="number">2</span>]</span><br><span class="line">].map(<span class="function"><span class="params">path</span> =&gt;</span> path([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]));</span><br></pre></td></tr></table></figure>
+<p>因为这些路径“只是函数”，所以我们也能复合它们。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getFirstPerson = <span class="function"><span class="params">people</span> =&gt;</span> people[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> getPostCode = <span class="function"><span class="params">person</span> =&gt;</span> person.address.postcode;</span><br><span class="line"><span class="keyword">const</span> getFirstPostCode = <span class="function"><span class="params">people</span> =&gt;</span> getPostCode(getFirstPerson(people));</span><br></pre></td></tr></table></figure>
+<p>我们甚至能创建更高阶能接收参数的路径。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getFirstNPeople = <span class="function"><span class="params">n</span> =&gt;</span> people =&gt; people.slice(<span class="number">0</span>, n);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getFirst5People = getFirstNPeople(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">const</span> getFirst5PostCodes = <span class="function"><span class="params">people</span> =&gt;</span> getFirst5People(people).map(getPostCode);</span><br></pre></td></tr></table></figure>
+<h2 id="8-Pick"><a href="#8-Pick" class="headerlink" title="8. Pick"></a>8. Pick</h2><p><a href="https://lodash.com/docs#pick" target="_blank" rel="noopener">pick</a> 工具能让我们从一个对象中选择我们想要的属性。我们也能通过解构与对象字面量简写来获取同样的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = &#123; <span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="string">'2'</span>, <span class="string">'c'</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> _.pick(object, [<span class="string">'a'</span>, <span class="string">'c'</span>]);</span><br><span class="line"><span class="comment">// &#123; a: 1, c: 3 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; a, c &#125; = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123; a, c &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="9-Constant-Identity-Noop"><a href="#9-Constant-Identity-Noop" class="headerlink" title="9. Constant, Identity, Noop"></a>9. Constant, Identity, Noop</h2><p>Lodash 提供了一些工具函数来创建简单的具某一特定行为的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_.constant(&#123; <span class="string">'a'</span>: <span class="number">1</span> &#125;)();</span><br><span class="line"><span class="comment">// &#123; a: 1 &#125;</span></span><br><span class="line">_.identity(&#123; <span class="attr">user</span>: <span class="string">'fred'</span> &#125;);</span><br><span class="line"><span class="comment">// &#123; user: 'fred' &#125;</span></span><br><span class="line">_.noop();</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>我们也能使用箭头函数行内定义这些函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> constant = <span class="function"><span class="params">x</span> =&gt;</span> () =&gt; x;</span><br><span class="line"><span class="keyword">const</span> identity = <span class="function"><span class="params">x</span> =&gt;</span> x;</span><br><span class="line"><span class="keyword">const</span> noop = <span class="function"><span class="params">()</span> =&gt;</span> <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+<p>或者我们也能把上面的例子重写为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="params">()</span> =&gt;</span> (&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;))();</span><br><span class="line"><span class="comment">// &#123; a: 1 &#125;</span></span><br><span class="line">(<span class="function"><span class="params">x</span> =&gt;</span> x)(&#123; <span class="attr">user</span>: <span class="string">'fred'</span> &#125;);</span><br><span class="line"><span class="comment">// &#123; user: 'fred' &#125;</span></span><br><span class="line">(<span class="function"><span class="params">()</span> =&gt;</span> <span class="literal">undefined</span>)();</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h2 id="10-Chaining-amp-Flow"><a href="#10-Chaining-amp-Flow" class="headerlink" title="10. Chaining &amp; Flow"></a>10. Chaining &amp; Flow</h2><p>Lodash 提供了一些函数来帮我们编写链式的语句。在大多情况下，内置的集合函数会返回一个数组实例，能直接被链式调用。但某些情况下，这些方法会改变这个集合，这样就不可能再直接地链式调用了（译者注：需要自己返回实例）。</p>
+<p>然而我们也能以一个箭头函数数组来定义同样的转化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">_([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"> .tap(<span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// 修改输入函数</span></span><br><span class="line">   array.pop();</span><br><span class="line"> &#125;)</span><br><span class="line"> .reverse()</span><br><span class="line"> .value();</span><br><span class="line"><span class="comment">// [2, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变为</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pipeline = [</span><br><span class="line">  array =&gt; &#123; array.pop(); <span class="keyword">return</span> array; &#125;,</span><br><span class="line">  array =&gt; array.reverse()</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">pipeline.reduce(<span class="function">(<span class="params">xs, f</span>) =&gt;</span> f(xs), [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+<p>这样的话，我们甚至不需要去思考 <a href="https://lodash.com/docs#tap" target="_blank" rel="noopener">tap</a> 和 <a href="https://lodash.com/docs#thru" target="_blank" rel="noopener">thru</a> 的不同。把这个归约包装成工具函数能创造出一个非常有用的多功能工具。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pipe = <span class="function"><span class="params">functions</span> =&gt;</span> data =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> functions.reduce(</span><br><span class="line">    (value, func) =&gt; func(value),</span><br><span class="line">    data</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pipeline = pipe([</span><br><span class="line">  x =&gt; x * <span class="number">2</span>,</span><br><span class="line">  x =&gt; x / <span class="number">3</span>,</span><br><span class="line">  x =&gt; x &gt; <span class="number">5</span>,</span><br><span class="line">  b =&gt; !b</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">pipeline(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line">pipeline(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Lodash 仍然还是一个非常优秀的库，这篇文章只提供了一个新鲜的观点，JavaScript 的进化版是如何让我们在一些我们之前可能不得不依赖一些工具模块的场景里允许我们直接解决问题的。</p>
+<p>不要忽略它（译者注：Lodash），但——下次你需求一个抽象时——思考一下是否一个简单的函数就能办到了！</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/lodash/" rel="tag"># lodash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/post/mongodb-command/" rel="next" title="mongoDB常用命令">
+                <i class="fa fa-chevron-left"></i> mongoDB常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/post/deploy-flarumchina-with-docker/" rel="prev" title="使用Docker部署FlarumChina">
+                使用Docker部署FlarumChina <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="comment"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn-1256167913.image.myqcloud.com/images/avatar.png" alt="Raincal">
+            
+              <p class="site-author-name" itemprop="name">Raincal</p>
+              <p class="site-description motion-element" itemprop="description">El Psy Congroo</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/blog/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/blog/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Raincal" title="GitHub &rarr; https://github.com/Raincal" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/cyj228" title="Twitter &rarr; https://twitter.com/cyj228" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/cyj228" title="Weibo &rarr; https://weibo.com/cyj228" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/Raincal" title="Telegram &rarr; https://t.me/Raincal" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:cyj94228@gmail.com" title="E-Mail &rarr; mailto:cyj94228@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.raincal.com" title="https://blog.raincal.com" rel="noopener" target="_blank">RAINCAL</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://status.raincal.com" title="https://status.raincal.com" rel="noopener" target="_blank">UPTIME</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.fangr.cc" title="https://www.fangr.cc" rel="noopener" target="_blank">Fong Ray's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Map-Filter-Reduce"><span class="nav-number">1.</span> <span class="nav-text">1. Map, Filter, Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Head-amp-Tail"><span class="nav-number">2.</span> <span class="nav-text">2. Head &amp; Tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Rest-amp-Spread"><span class="nav-number">3.</span> <span class="nav-text">3. Rest &amp; Spread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Curry"><span class="nav-number">4.</span> <span class="nav-text">4. Curry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Partial"><span class="nav-number">5.</span> <span class="nav-text">5. Partial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Operators"><span class="nav-number">6.</span> <span class="nav-text">6. Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Paths"><span class="nav-number">7.</span> <span class="nav-text">7. Paths</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Pick"><span class="nav-number">8.</span> <span class="nav-text">8. Pick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Constant-Identity-Noop"><span class="nav-number">9.</span> <span class="nav-text">9. Constant, Identity, Noop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Chaining-amp-Flow"><span class="nav-number">10.</span> <span class="nav-text">10. Chaining &amp; Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Raincal</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Hosted by <a target="_blank" rel="noopener" href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery-lazyload@1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+  
+
+
+
+  <!-- build:js /js/bundle.js -->
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.6.0"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+  <!-- endbuild -->
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+
+
+  
+
+
+    
+    
+      
+    
+
+    
+    
+      
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/Raincal/disqus-php-api@1.2.4/dist/iDisqus.min.css" type="text/css">
+    <script preload="" src="//cdn.jsdelivr.net/gh/Raincal/disqus-php-api@1.2.4/dist/iDisqus.min.js"></script>
+    <script>
+        var disq = new iDisqus('comment', {
+            forum: 'raincal',
+            site: 'https://raincal.com',
+            api: 'https://raincal-blog-disqus.now.sh',
+            mode: 3,
+            badge: '博主',
+            timeout: 3000,
+            init: true,
+            url: location.pathname
+        });
+        disq.count();
+    </script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "xDCefA9EsTVuN1A9rHMfI8CG-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "xDCefA9EsTVuN1A9rHMfI8CG-gzGzoHsz",
+                'X-LC-Key': "TgK8LqquaVhiY6lmrw6U8zcW",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
